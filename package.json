@@ -1,0 +1,59 @@
+{
+  "name": "@vueplug/typer",
+  "version": "0.0.1",
+  "description": "Vue component that simulates a user typing, selecting, and erasing text.",
+  "author":  {
+    "name": "yzqdev",
+    "email": "yzqdev@outlook.com"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "format": "prettier --write **/*.{vue,js,less}",
+    "ncu": "ncu &&ncu -u&&yarn"
+  },
+  "main": "dist/vue-typer.min.js",
+  "module": "dist/vue-typer.es.js",
+
+  "files": [
+    "src",
+    "dist"
+  ],
+  "dependencies": {
+    "@highlightjs/vue-plugin": "^2.1.0",
+    "element-plus": "^2.0.2",
+    "lodash.split": "^4.4.2",
+    "vite": "^2.8.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.2.2",
+    "axios": "^0.26.0",
+    "highlight.js": "^11.4.0",
+    "less": "^4.1.2",
+    "prettier": "2.5.1",
+    "vue": "^3.2.31"
+  },
+  "bugs": {
+    "url": "https://github.com/vueplug/vue-typer/issues"
+  },
+  "homepage": "https://github.com/vueplug/vue-typer#readme",
+  "keywords": [
+    "vue-typer",
+    "vue",
+    "vuejs",
+    "vue.js",
+    "component",
+    "typer",
+    "typewriter",
+    "type",
+    "auto"
+  ],
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vueplug/vue-typer.git"
+  }
+}
