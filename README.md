@@ -1,79 +1,99 @@
+# vueplug-typer
+
+> inspired by vueplug-typer
+
 <p align="center">
-  <img src="https://github.com/cngu/vue-typer/blob/develop/src/demo/assets/demo.gif?raw=true" alt="VueTyper demo gif"/>
+  <img src="https://github.com/cngu/vueplug-typer/blob/develop/src/demo/assets/demo.gif?raw=true" alt="VueTyper demo gif"/>
   <br><br>
   Vue component that simulates a user typing, selecting, and erasing text.
   <br><br>
-  <a href="https://cngu.github.io/vue-typer"><strong>Play with vue-typer in this interactive demo.</strong></a>
+  <a href="https://cngu.github.io/vueplug-typer"><strong>Play with vueplug-typer in this interactive demo.</strong></a>
   <br><br>
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/vue-typer"><img src="https://img.shields.io/npm/dt/vue-typer.svg" alt="Downloads"></a>
-  <a href="https://www.npmjs.com/package/vue-typer"><img src="https://img.shields.io/npm/v/vue-typer.svg" alt="Version"></a>
-  <a href="https://www.npmjs.com/package/vue-typer"><img src="https://img.shields.io/npm/l/vue-typer.svg" alt="License"></a>
+  <a href="https://www.npmjs.com/package/vueplug-typer"><img src="https://img.shields.io/npm/dt/vueplug-typer.svg" alt="Downloads"></a>
+  <a href="https://www.npmjs.com/package/vueplug-typer"><img src="https://img.shields.io/npm/v/vueplug-typer.svg" alt="Version"></a>
+  <a href="https://www.npmjs.com/package/vueplug-typer"><img src="https://img.shields.io/npm/l/vueplug-typer.svg" alt="License"></a>
 </p>
 
-- [Getting Started](#getting-started)
-- [Usage](#usage)
-- [Props](#props)
-  - [text](#text)
-  - [repeat](#repeat)
-  - [shuffle](#shuffle)
-  - [initialAction](#initialaction)
-  - [preTypeDelay](#pretypedelay)
-  - [typeDelay](#typedelay)
-  - [preEraseDelay](#preerasedelay)
-  - [eraseDelay](#erasedelay)
-  - [eraseStyle](#erasestyle)
-  - [eraseOnComplete](#eraseoncomplete)
-  - [caretAnimation](#caretanimation)
-- [Events](#events)
-  - [typed](#typed)
-  - [typed-char](#typed-char)
-  - [erased](#erased)
-  - [completed](#completed)
-- [Styles](#styles)
-- [Contribution Guide](#contribution-guide)
-- [Changelog](#changelog)
-- [TODO](#todo)
-- [License](#license)
+- [vueplug-typer](#vueplug-typer)
+  - [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
+      - [npm](#npm)
+      - [CDN](#cdn)
+  - [Usage](#usage)
+      - [Local Registration](#local-registration)
+      - [Global Registration](#global-registration)
+  - [Props](#props)
+      - [`text`](#text)
+      - [`repeat`](#repeat)
+      - [`shuffle`](#shuffle)
+      - [`initialAction`](#initialaction)
+      - [`preTypeDelay`](#pretypedelay)
+      - [`typeDelay`](#typedelay)
+      - [`preEraseDelay`](#preerasedelay)
+      - [`eraseDelay`](#erasedelay)
+      - [`eraseStyle`](#erasestyle)
+      - [`eraseOnComplete`](#eraseoncomplete)
+      - [`caretAnimation`](#caretanimation)
+  - [Events](#events)
+      - [`typed`](#typed)
+      - [`typed-char`](#typed-char)
+      - [`erased`](#erased)
+      - [`completed`](#completed)
+  - [Styles](#styles)
+  - [Contribution Guide](#contribution-guide)
+  - [Changelog](#changelog)
+  - [TODO](#todo)
+  - [License](#license)
 
 ## Getting Started
 
 > VueTyper has a single dependency to [lodash.split](https://github.com/lodash/lodash/blob/master/split.js) to support emojis and other multi-codepoint Unicode characters. Apart from this, VueTyper does not have any direct dependencies to any other library or framework -- not even to Vue itself! All required Vue API calls are made through Vue's `this.$*` context methods. This means VueTyper can only execute within a Vue application context, but in exchange, it does not need to pull in Vue, which keeps VueTyper lightweight.
 
 ### Prerequisites
-- Vue v2.x
-  - VueTyper has not been tested in Vue v1.x. ([See here for migration instructions from Vue 1.x to 2.x.](https://vuejs.org/v2/guide/migration.html))
+
+- Vue v3.2 and above
 
 ### Installation
+
 #### npm
+
 Use this method if you wish to import/require VueTyper as a module.
-```
-npm install --save vue-typer
+
+```shell
+npm install --save vueplug-typer
 ```
 
 #### CDN
+
 Use this method if you wish to access VueTyper globally via `window.VueTyper`.
+
 ```html
-<script src="https://unpkg.com/vue-typer/dist/vue-typer.min.js"></script>
+<script src="https://unpkg.com/vueplug-typer/dist/vueplug-typer.min.js"></script>
 ```
 
 ## Usage
-After installing VueTyper, you may choose to register it either globally or locally. [What's the difference? See the Vue documentation here.](https://vuejs.org/v2/guide/components.html#Registration)
+
+After installing VueTyper, you may choose to register it either globally or locally.  
 
 #### Local Registration
+
 1. Import the VueTyper component directly from your Vue component file:
+
   ```javascript
   // ES6
-  import { VueTyper } from 'vue-typer'
+  import { VueTyper } from 'vueplug-typer'
   // CommonJS
-  var VueTyper = require('vue-typer').VueTyper
+  var VueTyper = require('vueplug-typer').VueTyper
   // Global
   var VueTyper = window.VueTyper.VueTyper
   ```
 
 2. Register it as a local component in your Vue component options:
+
   ```javascript
   var MyComponent = {
     // ...
@@ -81,49 +101,55 @@ After installing VueTyper, you may choose to register it either globally or loca
       // ES6; property shorthand + Vue should automatically dasherize the key for us
       VueTyper
       // pre-ES6
-      'vue-typer': VueTyper
+      'vueplug-typer': VueTyper
     }
   }
   ```
 
-3. Use vue-typer in your Vue component's template:
+3. Use vueplug-typer in your Vue component's template:
 
   ```html
-  <vue-typer text='Hello World! I was registered locally!'></vue-typer>
+  <vueplug-typer text='Hello World! I was registered locally!'></vueplug-typer>
   ```
 
 #### Global Registration
+
 1. Import the VueTyper plugin in your application entry point:
+
   ```javascript
   // ES6
-  import VueTyperPlugin from 'vue-typer'
+  import VueTyperPlugin from 'vueplug-typer'
   // CommonJS
-  var VueTyperPlugin = require('vue-typer').default
+  var VueTyperPlugin = require('vueplug-typer').default
   // Global
   var VueTyperPlugin = window.VueTyper.default
   ```
 
 2. Register the VueTyper plugin with Vue
+
   ```javascript
   Vue.use(VueTyperPlugin)
   ```
 
-3. Now you can freely use vue-typer in any Vue component template:
+3. Now you can freely use vueplug-typer in any Vue component template:
+
   ```html
-  <vue-typer text='Hello World! I was registered globally!'></vue-typer>
+  <vueplug-typer text='Hello World! I was registered globally!'></vueplug-typer>
   ```
 
 ## Props
-It may be helpful to play around with these props in the [interactive demo](https://cngu.github.io/vue-typer/#playground).
+
+It may be helpful to play around with these props in the [interactive demo](https://cngu.github.io/vueplug-typer/#playground).
 
 #### `text`
+
 - **type**: `String || Array`
 - **required**
 - **validator**: Non-empty
 - **Usage**:
 
   ```html
-  <vue-typer text='watermelon'></vue-typer>
+  <vueplug-typer text='watermelon'></vueplug-typer>
   ```
 
   Either a single string, or an ordered list of strings, for VueTyper to type. Strings will not be trimmed.
@@ -132,13 +158,14 @@ It may be helpful to play around with these props in the [interactive demo](http
 - **See also**: [`shuffle`](#shuffle)
 
 #### `repeat`
+
 - **type**: `Number`
 - **default**: `Infinity`
 - **validator**: Non-negative
 - **Usage**:
 
   ```html
-  <vue-typer text='watermelon' :repeat='0'></vue-typer>
+  <vueplug-typer text='watermelon' :repeat='0'></vueplug-typer>
   ```
 
   Number of _extra_ times to type `text` after the first time. Setting 0 will type `text` once; 1 will type twice; Infinity will type forever.
@@ -146,12 +173,13 @@ It may be helpful to play around with these props in the [interactive demo](http
 - **Note**: Dynamically changing this value after VueTyper has mounted will cause VueTyper to reset itself and start typing from scratch.
 
 #### `shuffle`
+
 - **type**: `Boolean`
 - **default**: `false`
 - **Usage**:
 
   ```html
-  <vue-typer text='watermelon' :shuffle='true'></vue-typer>
+  <vueplug-typer text='watermelon' :shuffle='true'></vueplug-typer>
   ```
 
   Randomly shuffles `text` ([using the Fisher-Yates shuffle](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle)) before typing it. If `repeat > 0`, `text` will always be shuffled before repeated typings. `text` is _not_ shuffled after every word is typed. This implies that:
@@ -166,13 +194,14 @@ It may be helpful to play around with these props in the [interactive demo](http
 - **Note**: Dynamically changing this value after VueTyper has mounted will cause VueTyper to reset itself and start typing from scratch.
 
 #### `initialAction`
+
 - **type**: `String`
 - **default**: `"typing"`
 - **validator**: `"typing"` || `"erasing"`
 - **Usage**:
 
   ```html
-  <vue-typer text='watermelon' initial-action='erasing'></vue-typer>
+  <vueplug-typer text='watermelon' initial-action='erasing'></vueplug-typer>
   ```
 
   `typing` starts VueTyper off in the "typing" state; there will be empty space as VueTyper begins to type the first string in `text`.
@@ -180,13 +209,14 @@ It may be helpful to play around with these props in the [interactive demo](http
   `erasing` starts VueTyper off in the "erasing" state; the first string in `text` will already be typed and visible as VueTyper begins to erase it.
 
 #### `preTypeDelay`
+
 - **type**: `Number`
 - **default**: `70`
 - **validator**: Non-negative
 - **Usage**:
 
   ```html
-  <vue-typer text='watermelon' pre-type-delay='1000'></vue-typer>
+  <vueplug-typer text='watermelon' pre-type-delay='1000'></vueplug-typer>
   ```
 
   Milliseconds to wait before typing the first character of every string in `text`.
@@ -194,25 +224,27 @@ It may be helpful to play around with these props in the [interactive demo](http
   This is useful to have an idle period to show a blank space for a period of time before VueTyper types the first character.
 
 #### `typeDelay`
+
 - **type**: `Number`
 - **default**: `70`
 - **validator**: Non-negative
 - **Usage**:
 
   ```html
-  <vue-typer text='watermelon' type-delay='100'></vue-typer>
+  <vueplug-typer text='watermelon' type-delay='100'></vueplug-typer>
   ```
 
   Milliseconds to wait after typing a character, until the next character is typed.
 
 #### `preEraseDelay`
+
 - **type**: `Number`
 - **default**: `2000`
 - **validator**: Non-negative
 - **Usage**:
 
   ```html
-  <vue-typer text='watermelon' pre-erase-delay='1000'></vue-typer>
+  <vueplug-typer text='watermelon' pre-erase-delay='1000'></vueplug-typer>
   ```
 
   Milliseconds to wait after a string is fully typed, until the first erase action (i.e. backspace, highlight) is performed.
@@ -220,25 +252,27 @@ It may be helpful to play around with these props in the [interactive demo](http
   This is useful to have an idle period that gives users time to read the typed string before it is erased.
 
 #### `eraseDelay`
+
 - **type**: `Number`
 - **default**: `250`
 - **validator**: Non-negative
 - **Usage**:
 
   ```html
-  <vue-typer text='watermelon' erase-delay='70'></vue-typer>
+  <vueplug-typer text='watermelon' erase-delay='70'></vueplug-typer>
   ```
 
   Milliseconds to wait after performing an erase action (i.e. backspace, highlight), until the next erase action can start.
 
 #### `eraseStyle`
+
 - **type**: `String`
 - **default**: `"select-all"`
 - **validator**: `"backspace"` || `"select-back"` || `"select-all"` || `"clear"`
 - **Usage**:
 
   ```html
-  <vue-typer text='watermelon' erase-style='backspace'></vue-typer>
+  <vueplug-typer text='watermelon' erase-style='backspace'></vueplug-typer>
   ```
 
   `backspace` erases one character at a time, simulating the backspace key.
@@ -250,12 +284,13 @@ It may be helpful to play around with these props in the [interactive demo](http
   `clear` immediately erases all characters at once; the typed string simply disappears.
 
 #### `eraseOnComplete`
+
 - **type**: `Boolean`
 - **default**: `false`
 - **Usage**:
 
   ```html
-  <vue-typer text='watermelon' :erase-on-complete='true'></vue-typer>
+  <vueplug-typer text='watermelon' :erase-on-complete='true'></vueplug-typer>
   ```
 
   By default, after VueTyper completes all its typing (i.e. it finishes typing all strings in `text`, `repeat+1` times), the last typed string will not be erased and stay visible. Enabling this flag will tell VueTyper to erase the final string as well.
@@ -263,29 +298,34 @@ It may be helpful to play around with these props in the [interactive demo](http
 - **Note**: Has no effect if `repeat === Infinity`.
 
 #### `caretAnimation`
+
 - **type**: `String`
 - **default**: `"blink"`
 - **validator**: `"solid"` || `"blink"` || `"smooth"` || `"phase"` || `"expand"`
 - **Usage**:
 
   ```html
-  <vue-typer text='watermelon' caret-animation='smooth'></vue-typer>
+  <vueplug-typer text='watermelon' caret-animation='smooth'></vueplug-typer>
   ```
 
   Specifies a built-in caret animation to use, similar to Sublime and VS Code animations.
 
 - **Note**: Alternatively, custom animations can be applied via CSS.
 
-- **See also**: [Styles](#styles), [Example Custom Caret Animation](https://cngu.github.io/vue-typer#style-showcase)
+- **See also**: [Styles](#styles), [Example Custom Caret Animation](https://cngu.github.io/vueplug-typer#style-showcase)
 
 ## Events
+
 #### `typed`
+
 - **Event data**:
   - `String` typedString
 - **Usage**:
+
   ```html
-  <vue-typer text='watermelon' @typed='onTyped'></vue-typer>
+  <vueplug-typer text='watermelon' @typed='onTyped'></vueplug-typer>
   ```
+
   ```javascript
   {
     ...
@@ -300,13 +340,16 @@ It may be helpful to play around with these props in the [interactive demo](http
   Emitted everytime VueTyper finishes typing a string.
 
 #### `typed-char`
+
 - **Event data**:
   - `String` typedChar
   - `Number` typedCharIndex
 - **Usage**:
+
   ```html
-  <vue-typer text='watermelon' @typed-char='onTypedChar'></vue-typer>
+  <vueplug-typer text='watermelon' @typed-char='onTypedChar'></vueplug-typer>
   ```
+
   ```javascript
   {
     ...
@@ -325,12 +368,15 @@ It may be helpful to play around with these props in the [interactive demo](http
   Emitted everytime VueTyper finishes typing a single character.
 
 #### `erased`
+
 - **Event data**:
   - `String` erasedString
 - **Usage**:
+
   ```html
-  <vue-typer text='watermelon' @erased='onErased'></vue-typer>
+  <vueplug-typer text='watermelon' @erased='onErased'></vueplug-typer>
   ```
+
   ```javascript
   {
     ...
@@ -345,10 +391,13 @@ It may be helpful to play around with these props in the [interactive demo](http
   Emitted everytime VueTyper finishes erasing a string.
 
 #### `completed`
+
 - **Usage**:
+
   ```html
-  <vue-typer text='watermelon' @completed='onComplete'></vue-typer>
+  <vueplug-typer text='watermelon' @completed='onComplete'></vueplug-typer>
   ```
+
   ```javascript
   {
     ...
@@ -365,15 +414,17 @@ It may be helpful to play around with these props in the [interactive demo](http
 - **Note**: If [`eraseOnComplete`](#eraseoncomplete) is enabled, the final typed string must also be erased before this event is emitted.
 
 ## Styles
+
 To keep the separation of concern between component code and styles, VueTyper can be fully styled through CSS (as opposed to props).
 
 The following is a skeleton selector structure to override the style of each component of VueTyper.
 
 - **Usage**:
+
   ```css
   /* SCSS */
-  .vue-typer {
-    /* Styles for the vue-typer container
+  .vueplug-typer {
+    /* Styles for the vueplug-typer container
        e.g. font-family, font-size  */
 
     .custom.char {
@@ -434,9 +485,10 @@ The following is a skeleton selector structure to override the style of each com
   ```
 
 - **Note**: Some of the default styles above make things hidden using `display: none;`. If you wish to make it visible again, use `display: inline-block;`. Do not use `block`.
-- **See also**: [CSS Examples](https://cngu.github.io/vue-typer#style-showcase)
+- **See also**: [CSS Examples](https://cngu.github.io/vueplug-typer#style-showcase)
 
 ## Contribution Guide
+
 1. Make all changes on the `develop` branch.
 2. Update the demo page to showcase new APIs or features.
 3. Add unit tests.
@@ -444,9 +496,11 @@ The following is a skeleton selector structure to override the style of each com
 5. Submit a PR!
 
 ## Changelog
-Changes for each release will be documented [here](https://github.com/cngu/vue-typer/releases).
+
+Changes for each release will be documented [here](https://github.com/cngu/vueplug-typer/releases).
 
 ## TODO
+
 - Update to latest webpack
 - Remove Bootstrap usage in demo app
 - Consider marking lodash.split as a peer dependency via webpack externals (webpack-node-externals may be overkill?)
@@ -455,7 +509,7 @@ Changes for each release will be documented [here](https://github.com/cngu/vue-t
   - start typing only when VueTyper is on-screen; potentially pause typing when off-screen
   - smarter typing algorithm: erase only up to the longest common starting substring
   - is it worth it to eliminate time-drifting from setInterval? If so, it could be a self-correcting interval (implemented as a series of timeouts)
-  - See submitted [feature requests](https://github.com/cngu/vue-typer/issues?q=is%3Aissue+is%3Aopen+label%3A%22feature+request%22)
+  - See submitted [feature requests](https://github.com/cngu/vueplug-typer/issues?q=is%3Aissue+is%3Aopen+label%3A%22feature+request%22)
 - Vue documentation considers rendering-specific tests to still be 'unit' tests. Should we split this out into 'integration' tests?
 
 ## License

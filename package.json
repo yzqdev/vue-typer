@@ -1,5 +1,5 @@
 {
-  "name": "@vueplug/typer",
+  "name": "vueplug-typer",
   "version": "0.0.1",
   "description": "Vue component that simulates a user typing, selecting, and erasing text.",
   "author":  {
@@ -34,9 +34,9 @@
     "vue": "^3.2.31"
   },
   "bugs": {
-    "url": "https://github.com/vueplug/vue-typer/issues"
+    "url": "https://github.com/yzqdev/vue-typer/issues"
   },
-  "homepage": "https://github.com/vueplug/vue-typer#readme",
+  "homepage": "https://github.com/yzqdev/vue-typer#readme",
   "keywords": [
     "vue-typer",
     "vue",
@@ -54,6 +54,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vueplug/vue-typer.git"
+    "url": "git+https://github.com/yzqdev/vue-typer.git"
   }
 }
