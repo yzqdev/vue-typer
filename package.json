@@ -1,6 +1,6 @@
 {
   "name": "vueplug-typer",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Vue component that simulates a user typing, selecting, and erasing text.",
   "author": {
     "name": "yzqdev",
