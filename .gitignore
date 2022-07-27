@@ -5,6 +5,6 @@ node_modules
 dist/*.map
 test/**/coverage
 .idea
-dist
+lib
 *.pug
 yarn.lock

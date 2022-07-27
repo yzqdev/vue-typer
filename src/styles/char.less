@@ -1,27 +1,4 @@
-<template>
-  <span class="char" :class="classes">{{ val }}</span>
-</template>
-
-<script>
-export default {
-  props: {
-    val: {
-      type: String,
-      default: "",
-    },
-  },
-  computed: {
-    classes() {
-      return {
-        newline: this.val.includes("\n"),
-      };
-    },
-  },
-};
-</script>
-
-<style scoped lang="less">
-@import "styles/typer-colors";
+@import "./typer-colors";
 
 .char {
   display: inline-block;
@@ -48,4 +25,3 @@ export default {
 .erased {
   display: none;
 }
-</style>

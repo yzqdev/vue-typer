@@ -34,11 +34,9 @@
       ><el-row>
         <el-col :span="6" id="general-config">
           <label for="repeat">repeat</label>
-          <el-input
-
-            v-model="repeatModel"
-            id="repeat"
-          /><el-checkbox v-model="shuffle">乱序 </el-checkbox
+          <el-input v-model="repeatModel" id="repeat" /><el-checkbox
+            v-model="shuffle"
+            >乱序 </el-checkbox
           ><el-checkbox class="shrink-text" v-model="eraseOnComplete"
             >eraseOnComplete
           </el-checkbox>

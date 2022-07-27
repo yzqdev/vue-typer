@@ -2,36 +2,46 @@
   "name": "vueplug-typer",
   "version": "0.0.1",
   "description": "Vue component that simulates a user typing, selecting, and erasing text.",
-  "author":  {
+  "author": {
     "name": "yzqdev",
     "email": "yzqdev@outlook.com"
   },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "format": "prettier --write **/*.{vue,js,less}",
-    "ncu": "ncu &&ncu -u&&yarn"
+    "format": "prettier --write src/**/*.{vue,tsx,ts,less} vite.config.ts"
   },
-  "main": "dist/vue-typer.min.js",
-  "module": "dist/vue-typer.es.js",
-
+  "main": "lib/vue-typer.min.js",
+  "module": "lib/vue-typer.es.js",
+  "types": "./lib/vue-typer.d.ts",
+  "exports": {
+    ".": {
+      "import": "./lib/vue-typer.es.js",
+      "require": "./lib/vue-typer.umd.js"
+    },
+    "./lib/style.css": "./lib/style.css"
+  },
   "files": [
     "src",
     "dist"
   ],
   "dependencies": {
     "@highlightjs/vue-plugin": "^2.1.0",
-    "element-plus": "^2.0.2",
+    "element-plus": "^2.2.11",
     "lodash.split": "^4.4.2",
-    "vite": "^2.8.4"
+    "vite": "^3.0.3"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^2.2.2",
-    "axios": "^0.26.0",
-    "highlight.js": "^11.4.0",
-    "less": "^4.1.2",
-    "prettier": "2.5.1",
-    "vue": "^3.2.31"
+    "@types/node": "^18.6.1",
+    "@vitejs/plugin-vue": "^3.0.1",
+    "@vitejs/plugin-vue-jsx": "^2.0.0",
+    "axios": "^0.27.2",
+    "highlight.js": "^11.6.0",
+    "less": "^4.1.3",
+    "prettier": "2.7.1",
+    "typescript": "^4.7.4",
+    "vite-plugin-dts": "^1.4.0",
+    "vue": "^3.2.37"
   },
   "bugs": {
     "url": "https://github.com/yzqdev/vue-typer/issues"
@@ -54,6 +64,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yzqdev/vue-typer.git"
+    "url": "https://github.com/yzqdev/vue-typer.git"
   }
 }

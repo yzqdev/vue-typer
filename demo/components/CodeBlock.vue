@@ -9,8 +9,6 @@
 </template>
 
 <script>
-
-
 export default {
   props: {
     code: String,
@@ -18,10 +16,7 @@ export default {
   },
   computed: {},
 
-  methods: {
-
-  },
-
+  methods: {},
 };
 </script>
 

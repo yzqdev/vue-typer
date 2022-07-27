@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import Caret from "./Caret.vue";
-import Char from "./Char.vue";
+import Caret from "./Caret";
+import Char from "./Char";
 import shallowEquals from "./utils/shallow-equals";
 import shuffle from "./utils/shuffle";
 import split from "lodash.split";
@@ -423,7 +423,6 @@ export default {
 span.vue-typer {
   cursor: default;
   user-select: none;
-
   span.left,
   span.right {
     display: inline;
